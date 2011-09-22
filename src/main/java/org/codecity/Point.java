@@ -22,6 +22,11 @@ public class Point {
 	}
 	
 	@Override
+	public int hashCode() {
+		return x << 16 ^ y;
+	}
+	
+	@Override
 	public String toString() {
 		return String.format("(%d, %d)", x, y);
 	}

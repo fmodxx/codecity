@@ -17,6 +17,10 @@ public class Dimension {
 		return width > other.width && height > other.height;
 	}
 
+	public boolean isGreaterEquals(Dimension other) {
+		return width >= other.width && height >= other.height;
+	}
+
 	public boolean isLower(Dimension other) {
 		return width < other.width || height < other.height;
 	}
@@ -27,6 +31,11 @@ public class Dimension {
 			return false;
 		Dimension other = (Dimension) obj;
 		return width == other.width && height == other.height;
+	}
+	
+	@Override
+	public int hashCode() {
+		return width << 16 ^ height;
 	}
 	
 	@Override

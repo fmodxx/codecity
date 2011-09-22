@@ -31,7 +31,7 @@ public class SplitNode {
 	}
 
 	public SplitNode split(Dimension d) {
-		if (dimension.isLower(d))
+		if (dimension.isLower(d) || left != null || right != null)
 			throw new IllegalStateException();
 		
 		switch (splitMode(d)) {
@@ -75,7 +75,17 @@ public class SplitNode {
 	}
 	
 	@Override
+	public int hashCode() {
+		return origin.hashCode() ^ dimension.hashCode();
+	}
+	
+	@Override
 	public String toString() {
 		return String.format("Region[ %s %s ]", origin, dimension);
+	}
+
+	public boolean isLeaf()
+	{
+		return left == null && right == null;
 	}
 }

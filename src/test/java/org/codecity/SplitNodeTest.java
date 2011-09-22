@@ -66,6 +66,12 @@ public class SplitNodeTest {
 		assertEquals(splitNode(point(5, 0), dimension(4, 9)), root.right());
 	}
 	
+	@Test(expected=IllegalStateException.class)
+	public void splitWorksFirstTime() {
+		root.split(dimension(5, 3));
+		root.split(dimension(2, 3));
+	}
+	
 	private SplitNode splitNode(Point point, Dimension dimension) {
 		return new SplitNode(point, dimension, strategy);
 	}
